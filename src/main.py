@@ -42,7 +42,6 @@ def format_time(seconds):
     return formatted_time
 
 def remove_diacritics(text):
-    # Define a translation table for Romanian diacritics
     translation_table = str.maketrans({
         "ă": "a", "Ă": "A",
         "â": "a", "Â": "A",
@@ -52,9 +51,7 @@ def remove_diacritics(text):
         "ț": "t", "Ţ": "T"
     })
     
-    # Apply the translation
     return text.translate(translation_table)
-
 
 def generate_subtitle_file(language, segments):
 
