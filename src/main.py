@@ -1,11 +1,18 @@
-import time
 import math
 import ffmpeg
+import argparse
 from translate import Translator
 
 from faster_whisper import WhisperModel
 
-input_video = "test.mp4"
+parser = argparse.ArgumentParser(description="Subtitrari", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+
+parser.add_argument('filename', help='filename, must end in .mp4')
+
+args = parser.parse_args()
+config = vars(args)
+
+input_video = config.get('filename')
 input_video_name = input_video.replace(".mp4", "")
 
 tt = Translator(to_lang='ro')
@@ -85,4 +92,5 @@ def run():
     segments=segments
     )
     
-run()
+if __name__ == "__main__":
+    run()
